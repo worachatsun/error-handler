@@ -6,9 +6,9 @@ export interface ITrace {
 export default class CustomError extends Error {
   trace: Array<ITrace> = [];
   error: Error;
-  apiCode?: number;
+  apiCode?: string;
 
-  constructor(error: Error, apiCode?: number) {
+  constructor(error: Error, apiCode?: string) {
     super(error?.message);
     Object.setPrototypeOf(this, CustomError.prototype);
     this.error = error;
@@ -25,7 +25,7 @@ export default class CustomError extends Error {
     return this;
   }
 
-  combine(): { message: string; metadata: unknown; apiCode?: number } {
+  combine(): { message: string; metadata: unknown; apiCode?: string } {
     let message = '';
     let metadata = {};
 
@@ -45,8 +45,7 @@ export default class CustomError extends Error {
 
   toString(): string {
     return (
-      this.trace.reduce((prev, cur: ITrace) => `${cur.source}: ${prev}`, '') +
-      this.error.message
+      this.trace.reduce((prev, cur: ITrace) => `${cur.source}: ${prev}`, '') + this.error.message
     );
   }
 }
