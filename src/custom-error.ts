@@ -2,6 +2,7 @@ export interface ITrace {
   source?: string;
   metadata?: unknown;
 }
+
 export default class CustomError extends Error {
   trace: Array<ITrace> = [];
   error: Error;
