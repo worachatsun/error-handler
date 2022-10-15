@@ -1,0 +1,45 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    "semi": ["error", "never"],
+
+    // String
+    "quotes": ["error", "single"],
+    "no-multi-str": "error", // prettier unset
+    "prefer-template": "error",
+    "template-curly-spacing": "error",
+    "no-useless-escape": "error",
+
+    // Object 2 5
+    "no-new-object": "error", // prettier unset
+    "object-shorthand": "error",
+    "quote-props": ["error", "as-needed", { "keywords": true }],
+    "no-prototype-builtins": "error", // prettier unset
+    "prefer-object-spread": "error",
+
+    // Array 2 (weird), 3
+    "no-array-constructor": "error",
+    "prefer-spread": "error",
+    "array-element-newline": [
+      "error",
+      {
+        "ArrayExpression": "consistent",
+        "ArrayPattern": { "minItems": 3 }
+      }
+    ],
+    "array-callback-return": "error"
+  }
+}

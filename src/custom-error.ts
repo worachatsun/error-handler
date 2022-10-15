@@ -1,51 +1,52 @@
-export interface ITrace {
-  source?: string;
-  metadata?: unknown;
+export type ITrace = {
+  source?: string
+  metadata?: unknown
 }
 
 export default class CustomError extends Error {
-  trace: Array<ITrace> = [];
-  error: Error;
-  apiCode?: string;
+  trace: Array<ITrace> = []
+  error: Error
+  apiCode?: string
 
   constructor(error: Error, apiCode?: string) {
-    super(error?.message);
-    Object.setPrototypeOf(this, CustomError.prototype);
-    this.error = error;
-    this.apiCode = apiCode;
+    super(error?.message)
+    Object.setPrototypeOf(this, CustomError.prototype)
+    this.error = error
+    this.apiCode = apiCode
   }
 
   wrap(trace: ITrace): CustomError {
-    this.trace.push(trace);
-    return this;
+    this.trace.push(trace)
+    return this
   }
 
   unwrap(): CustomError {
-    this.trace.pop();
-    return this;
+    this.trace.pop()
+    return this
   }
 
   combine(): { message: string; metadata: unknown; apiCode?: string } {
-    let message = '';
-    let metadata = {};
+    let message = ''
+    let metadata = {}
 
-    const n = this.trace.length - 1;
+    const n = this.trace.length - 1
     for (let i = n; i >= 0; i--) {
-      const { source, metadata: metadataStack } = this.trace[i];
-      message += `${source}: `;
+      const { source, metadata: metadataStack } = this.trace[i]
+      message += `${source}: `
       metadata = {
         ...metadata,
-        ...(typeof metadataStack === 'object' ? metadataStack : {}),
-      };
+        ...(typeof metadataStack === 'object' ? metadataStack : {})
+      }
     }
-    message += this.error?.message;
+    message += this.error?.message
 
-    return { message, metadata, apiCode: this.apiCode };
+    return { message, metadata, apiCode: this.apiCode }
   }
 
   toString(): string {
     return (
-      this.trace.reduce((prev, cur: ITrace) => `${cur.source}: ${prev}`, '') + this.error.message
-    );
+      this.trace.reduce((prev, cur: ITrace) => `${cur.source}: ${prev}`, '') +
+      this.error.message
+    )
   }
 }
