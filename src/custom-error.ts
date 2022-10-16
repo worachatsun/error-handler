@@ -3,6 +3,8 @@ export type ITrace = {
   metadata?: unknown
 }
 
+export type ICombineResponse = { message: string; metadata: unknown; apiCode?: string }
+
 export default class CustomError extends Error {
   trace: Array<ITrace> = []
   error: Error
@@ -25,7 +27,7 @@ export default class CustomError extends Error {
     return this
   }
 
-  combine(): { message: string; metadata: unknown; apiCode?: string } {
+  combine(): ICombineResponse {
     let message = ''
     let metadata = {}
 
@@ -45,8 +47,7 @@ export default class CustomError extends Error {
 
   toString(): string {
     return (
-      this.trace.reduce((prev, cur: ITrace) => `${cur.source}: ${prev}`, '') +
-      this.error.message
+      this.trace.reduce((prev, cur: ITrace) => `${cur.source}: ${prev}`, '') + this.error.message
     )
   }
 }
