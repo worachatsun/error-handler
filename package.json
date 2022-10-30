@@ -26,6 +26,8 @@
     "test:watch": "jest --watch",
     "lint": "eslint --ext .js,.ts .",
     "prepare": "husky install",
+    "extractor": "api-extractor run --local --verbose",
+    "extract:diagnostics": "api-extractor run --local --diagnostics",
     "tsc": "./node_modules/.bin/tsc"
   },
   "dependencies": {}
