@@ -1,13 +1,17 @@
 {
-    "include": ["src/**/*"],
-    "compilerOptions": {
-      "target": "es6",
-      "module": "commonjs",
-      "esModuleInterop": true,
-      "allowJs": true,
-      "declaration": true,
-      "emitDeclarationOnly": true,
-      "outDir": "dist",
-      "declarationMap": true
-    }
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "lib": ["es6"],
+    "outDir": "lib",
+    "declarationMap": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "types": ["jest", "node"]
+  }
 }

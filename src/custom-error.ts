@@ -10,6 +10,10 @@ export type ICombineResponse = {
   stack?: string
 }
 
+/**
+ * The widget class
+ * @beta
+ */
 export default class CustomError extends Error {
   trace: Array<ITrace> = []
   error: Error
