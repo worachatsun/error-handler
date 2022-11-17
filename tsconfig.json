@@ -1,5 +1,4 @@
 {
-  "include": ["src/**/*.ts"],
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
@@ -8,10 +7,12 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "lib": ["es6"],
-    "outDir": "lib",
+    "outDir": "./dist",
     "declarationMap": true,
     "sourceMap": true,
     "skipLibCheck": true,
     "types": ["jest", "node"]
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
