@@ -1,7 +1,9 @@
 {
   "name": "pursue-error",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "type": "module",
   "main": "./dist/index.js",
+  "module": "dist/index.es.js",
   "typings": "./dist/index.d.ts",
   "repository": "git@github.com:worachatsun/error-handler.git",
   "author": "worachatsun <worachat.sun@gmail.com>",

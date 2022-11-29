@@ -12,6 +12,11 @@ export default {
       format: 'cjs',
       sourcemap: true,
       name: 'index'
+    },
+    {
+      file: packageJson.module,
+      format: 'esm',
+      sourcemap: true
     }
   ],
   plugins: [external(), resolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' })]

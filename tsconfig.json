@@ -1,18 +1,21 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "target": "es6",
-    "module": "commonjs",
+    "module": "esnext",
     "esModuleInterop": true,
     "allowJs": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
     "lib": ["es6"],
     "outDir": "./dist",
     "declarationMap": true,
+    "strict": true,
     "sourceMap": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "noEmit": true
   },
-  "include": ["src/**/*"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
